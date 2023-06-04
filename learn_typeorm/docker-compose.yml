@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  database:
+    image: postgres
+    environment:
+      - POSTGRES_USER=sbars
+      - POSTGRES_PASSWORD=sbars123
+      - POSTGRES_DB=typeorm
+    ports:
+      - "5432:5432"
