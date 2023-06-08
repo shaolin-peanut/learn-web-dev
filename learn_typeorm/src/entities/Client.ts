@@ -13,6 +13,11 @@ export class Client extends Person {
     card_number: string
 
     @Column({
+        type: "numeric"
+    })
+    balance: number;
+
+    @Column({
         default: true,
         name: "active"
     })

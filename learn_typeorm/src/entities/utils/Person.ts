@@ -16,9 +16,4 @@ export class Person extends BaseEntity {
         unique: true
     })
     email:  string;
-
-    @Column({
-        type: "numeric"
-    })
-    balance: number;
 }
