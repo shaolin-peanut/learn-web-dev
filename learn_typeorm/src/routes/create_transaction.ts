@@ -1,6 +1,6 @@
 import express from "express";
-import { Client } from "src/entities/Client";
-import { Transaction, TransactionTypes } from "src/entities/Transaction";
+import { Client } from "../entities/Client";
+import { Transaction, TransactionType } from "../entities/Transaction";
 
 const router = express.Router();
 
@@ -25,9 +25,9 @@ router.post("/api/client/:clientId/transaction", async (req, res) => {
 
     await transaction.save()
 
-    if (type === TransactionTypes.DEPOSIT) {
+    if (type === TransactionType.DEPOSIT) {
         client.balance = client.balance + amount
-    } else if (type === TransactionTypes.WITHDRAWAL) {
+    } else if (type === TransactionType.WITHDRAWAL) {
         client.balance = client.balance - amount
     }
 

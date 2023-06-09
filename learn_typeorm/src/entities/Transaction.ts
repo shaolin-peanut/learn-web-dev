@@ -1,19 +1,19 @@
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
 import { Client } from "./Client";
 
-export enum TransactionTypes {
+export enum TransactionType {
     DEPOSIT = 'deposit',
     WITHDRAWAL = 'withdraw'
 }
 
-@Entity("transactions")
+@Entity("transaction")
 export class Transaction extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column({
         type: "enum",
-        enum: TransactionTypes
+        enum: TransactionType
     })
     type: string;
 
@@ -24,7 +24,10 @@ export class Transaction extends BaseEntity {
 
     @ManyToOne(
         () => Client,
-        client => client.transactions
+        client => client.transactions,
+        {
+            onDelete: "CASCADE"
+        }
     )
     @JoinColumn({
         name: 'client_id'

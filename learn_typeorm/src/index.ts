@@ -6,6 +6,8 @@ import { Transaction } from "./entities/Transaction"
 import { createClientRouter } from "./routes/create_client"
 import { createBankerRouter } from "./routes/create_banker"
 import { createTransactionRouter } from "./routes/create_transaction"
+import { deleteClientRouter } from "./routes/delete_client"
+import { fetchClientRouter } from "./routes/fetch_clients"
 
 const app = express()
 
@@ -26,6 +28,8 @@ const main = async () => {
         app.use(createClientRouter)
         app.use(createBankerRouter)
         app.use(createTransactionRouter)
+        app.use(deleteClientRouter)
+        app.use(fetchClientRouter)
 
         app.listen(8080, () => {
             console.log("Now running on port 8080")
